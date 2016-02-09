@@ -1,6 +1,15 @@
----
+# ---
+# test:
+#   override:
+#     - python manage.py test
+#   post:
+#     - coverage html -d $CIRCLE_ARTIFACTS
+
+
+dependencies:
+  override:
+    - pip install -r requirements.txt
+
 test:
   override:
     - python manage.py test
-  post:
-    - coverage html -d $CIRCLE_ARTIFACTS
