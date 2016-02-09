@@ -1,0 +1,42 @@
+# ---
+# test:
+#   override:
+#     - python manage.py test
+#   post:
+#     - coverage html -d $CIRCLE_ARTIFACTS
+
+
+# dependencies:
+#   override:
+#     - pip install -r requirements.txt
+
+# test:
+#   override:
+#     - python manage.py test
+
+
+box: python:2.7-slim
+
+
+build:
+  steps:
+    - virtualenv
+
+
+build:
+  steps:
+    - pip-install
+
+build:
+  # The steps that will be executed on build
+  steps:
+    # A step that executes `pip install` command
+    - pip-install
+
+    # A custom script step, name value is used in the UI
+    # and the code value contains the command that get executed
+    - script:
+        name: python unit test
+        code: |
+          pip list
+          python manage.py test
